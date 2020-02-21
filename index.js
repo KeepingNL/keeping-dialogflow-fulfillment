@@ -137,7 +137,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
         return;
       }
 
-      conv.close(`Je laatste tijdregistratie is hervat.`);
+      conv.close(`Oké, ik heb laatste tijdregistratie hervat. Succes met werken!`);
 
     } else {
       conv.close(`Mooi, ik hoef niets te doen. Je hebt al een lopende tijdregistratie.`);
@@ -188,7 +188,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
         return;
       }
 
-      conv.close(`Je kan nu pauze nemen.`);
+      conv.close(`Oké prima. Ik zal de pauze voor je bijhouden. Geniet ervan!`);
 
     } else {
       conv.close(`Mooi, ik hoef niets te doen. Je hebt al een lopende pauzeregistratie.`);
@@ -235,7 +235,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
         return;
       }
 
-      conv.close(`Je tijdregistratie is gestopt.`);
+      conv.close(`Goed, ik heb de tijdregistratie gestopt.`);
 
     } else {
       conv.close(`Mooi, ik hoef niets te doen. Je hebt geen lopende tijdregistratie.`);
