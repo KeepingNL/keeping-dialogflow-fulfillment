@@ -215,13 +215,15 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
       const response = await axios.get(`${organisation.id}/time-entries/last?purpose=work&ongoing=1`);
       last = response.data.time_entry;
     } catch (error) {
-      console.error(error);
-      conv.close(`Sorry er is iets fout gegaan. Ik kon je lopende tijdregistratie niet ophalen.`);
-      agent.add(conv);
-      return;
+      if (!(error.response && error.response.status == 404)) {
+        console.error(error);
+        conv.close(`Sorry er is iets fout gegaan. Ik kon je lopende tijdregistratie niet ophalen.`);
+        agent.add(conv);
+        return;
+      }
     }
 
-    if (last.ongoing === true) {
+    if (last !== null && last.ongoing === true) {
 
       try {
         const response = await axios.patch(`${organisation.id}/time-entries/${last.id}/stop`);
