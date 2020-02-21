@@ -188,7 +188,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
         return;
       }
 
-      conv.ask(`Je kan nu pauze nemen.`);
+      conv.close(`Je kan nu pauze nemen.`);
 
     } else {
       conv.close(`Mooi, ik hoef niets te doen. Je hebt al een lopende pauzeregistratie.`);
